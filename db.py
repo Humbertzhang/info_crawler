@@ -26,9 +26,14 @@ def init_students_table(cur):
 def insert_students(stus, cur):
     try:
         for stu in stus:
-            cur.execute("insert into students (cid, name, college, politic, gender, major, birth, national, grade, home) values " + "('" + str(stu[0]) + "','" + str(stu[1]) + "','" + str(stu[2]) + "','" + str(stu[3]) + "','" + str(stu[4]) + "','" + str(stu[5]) + "','" + str(stu[6]) + "','" + str(stu[7]) + "','"+ str(stu[8]) + "','" + str(stu[9]) + "');")
+            cur.execute("insert into students (cid, name, college, politic, gender, major, birth, national, grade, home) values " + "('" +
+                        str(stu[0]) + "','" + str(stu[1]) + "','" + 
+                        str(stu[2]) + "','" + str(stu[3]) + "','" + 
+                        str(stu[4]) + "','" + str(stu[5]) + "','" + 
+                        str(stu[6]) + "','" + str(stu[7]) + "','" + 
+                        str(stu[8]) + "','" + str(stu[9]) + "');")
             print(stu)
-    except:
+    except pymysql.err.IntegrityError as err:
         pass
     conn.commit()
 if __name__ == '__main__':
